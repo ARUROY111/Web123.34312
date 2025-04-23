@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Random Vibes 🌈</title>
+  <title>Vibe Generator ✨</title>
   <style>
     body {
       margin: 0;
@@ -14,12 +14,14 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
       transition: background 1s ease;
+      overflow: hidden;
     }
     h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
+      animation: float 3s ease-in-out infinite;
     }
     .quote {
       font-size: 1.5rem;
@@ -27,10 +29,10 @@
     }
     button {
       margin-top: 2rem;
-      padding: 10px 20px;
+      padding: 12px 24px;
       font-size: 1rem;
       border: none;
-      border-radius: 5px;
+      border-radius: 30px;
       background-color: rgba(255,255,255,0.2);
       color: white;
       cursor: pointer;
@@ -39,28 +41,36 @@
     button:hover {
       background-color: rgba(255,255,255,0.4);
     }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Hello, World! 👋</h1>
-  <div class="quote" id="quote">Click below for a random quote!</div>
-  <button onclick="generateRandom()">Surprise Me</button>
+  <h1>✨ Welcome to the Mood Board ✨</h1>
+  <div class="quote" id="quote">Hit the button for today’s mood 💫</div>
+  <button onclick="generateRandom()">Give Me a Vibe</button>
 
   <script>
     const quotes = [
-      "Be yourself; everyone else is already taken. – Oscar Wilde",
-      "The best way to get started is to quit talking and begin doing. – Walt Disney",
-      "Do what you can with all you have, wherever you are. – Theodore Roosevelt",
-      "Creativity is intelligence having fun. – Albert Einstein",
-      "Success is not in what you have, but who you are. – Bo Bennett"
+      "Keep your face always toward the sunshine—and shadows will fall behind you. – Walt Whitman",
+      "Your vibe attracts your tribe. – Unknown",
+      "Stay close to anything that makes you feel alive. – Unknown",
+      "Live less out of habit and more out of intent. – Unknown",
+      "You are the artist of your own life. Don’t hand the paintbrush to anyone else. – Unknown"
     ];
 
     const gradients = [
-      "linear-gradient(135deg, #ff758c, #ff7eb3)",
-      "linear-gradient(135deg, #43cea2, #185a9d)",
-      "linear-gradient(135deg, #f7971e, #ffd200)",
-      "linear-gradient(135deg, #e1eec3, #f05053)",
-      "linear-gradient(135deg, #8360c3, #2ebf91)"
+      "linear-gradient(135deg, #ff9a9e, #fad0c4)",
+      "linear-gradient(135deg, #a1c4fd, #c2e9fb)",
+      "linear-gradient(135deg, #fbc2eb, #a6c1ee)",
+      "linear-gradient(135deg, #fddb92, #d1fdff)",
+      "linear-gradient(135deg, #d299c2, #fef9d7)"
     ];
 
     function generateRandom() {
