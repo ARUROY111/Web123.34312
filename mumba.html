@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Vibes 🌈</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      transition: background 1s ease;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .quote {
+      font-size: 1.5rem;
+      padding: 0 20px;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: rgba(255,255,255,0.2);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: rgba(255,255,255,0.4);
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello, World! 👋</h1>
+  <div class="quote" id="quote">Click below for a random quote!</div>
+  <button onclick="generateRandom()">Surprise Me</button>
+
+  <script>
+    const quotes = [
+      "Be yourself; everyone else is already taken. – Oscar Wilde",
+      "The best way to get started is to quit talking and begin doing. – Walt Disney",
+      "Do what you can with all you have, wherever you are. – Theodore Roosevelt",
+      "Creativity is intelligence having fun. – Albert Einstein",
+      "Success is not in what you have, but who you are. – Bo Bennett"
+    ];
+
+    const gradients = [
+      "linear-gradient(135deg, #ff758c, #ff7eb3)",
+      "linear-gradient(135deg, #43cea2, #185a9d)",
+      "linear-gradient(135deg, #f7971e, #ffd200)",
+      "linear-gradient(135deg, #e1eec3, #f05053)",
+      "linear-gradient(135deg, #8360c3, #2ebf91)"
+    ];
+
+    function generateRandom() {
+      const quote = quotes[Math.floor(Math.random() * quotes.length)];
+      const bg = gradients[Math.floor(Math.random() * gradients.length)];
+      document.getElementById('quote').innerText = quote;
+      document.body.style.background = bg;
+    }
+  </script>
+</body>
+</html>
