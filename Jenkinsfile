@@ -1,8 +1,3 @@
-// This must go OUTSIDE the pipeline { } block!
-properties([
-    [$class: 'Mailer', smtpHost: 'smtp.gmail.com', smtpPort: '465']
-])
-
 pipeline {
     agent any
 
@@ -64,7 +59,6 @@ Regards,
 Your Jenkins Bot 🤖
                                 """,
                                 to: "${EMAIL_RECIPIENTS}",
-                                replyTo: 'noreply@gmail.com',
                                 mimeType: 'text/plain'
                             )
                         } else {
