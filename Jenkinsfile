@@ -1,10 +1,10 @@
+// This must go OUTSIDE the pipeline { } block!
+properties([
+    [$class: 'Mailer', smtpHost: 'smtp.gmail.com', smtpPort: '465']
+])
+
 pipeline {
     agent any
-
-    // SMTP properties block at the top of the pipeline
-    properties([
-        [$class: 'Mailer', smtpHost: 'smtp.gmail.com', smtpPort: '465']
-    ])
 
     environment {
         EMAIL_RECIPIENTS = 'royarunava111@gmail.com,sulataroy1111@gmail.com'
@@ -75,6 +75,10 @@ Your Jenkins Bot 🤖
                     }
                 }
             }
+        }
+    }
+}
+
         }
     }
 }
