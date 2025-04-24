@@ -8,24 +8,40 @@ pipeline {
         stage('Detect Merge') {
             steps {
                 script {
-                    def currentBranch = bat(
-                        script: "${GIT_PATH} rev-parse --abbrev-ref HEAD",
+                    echo "🔍 Checking if HEAD is the latest commit on main..."
+
+                    def fetchOutput = bat(
+                        script: "@echo off && ${GIT_PATH} fetch origin main",
+                        returnStdout: true
+                    )
+                    echo "Git fetch output: \n${fetchOutput}"
+
+                    def mainCommit = bat(
+                        script: "@echo off && ${GIT_PATH} rev-parse origin/main",
                         returnStdout: true
                     ).trim()
-                    echo "Current branch: ${currentBranch}"
 
-                    if (currentBranch == 'main') {
-                        echo "Running on main branch. Checking for merge commit..."
+                    def headCommit = bat(
+                        script: "@echo off && ${GIT_PATH} rev-parse HEAD",
+                        returnStdout: true
+                    ).trim()
+
+                    echo "HEAD Commit: ${headCommit}"
+                    echo "Main Commit: ${mainCommit}"
+
+                    if (headCommit == mainCommit) {
+                        echo "✅ This is the latest commit on main. Checking for merge commit..."
 
                         def parentHashes = bat(
-                            script: "${GIT_PATH} log -1 --pretty=%P",
+                            script: "@echo off && ${GIT_PATH} log -1 --pretty=%P",
                             returnStdout: true
                         ).trim()
                         def parentCount = parentHashes.split().length
                         def isMergeCommit = parentCount > 1
 
                         if (isMergeCommit) {
-                            echo "✅ This is a merge commit. Sending email..."
+                            echo "🟢 Merge commit detected! Sending email..."
+
                             emailext (
                                 subject: "🚀 Merge to main detected!",
                                 body: """
@@ -46,7 +62,7 @@ Your Jenkins Bot 🤖
                             echo "ℹ️ Not a merge commit. No email sent."
                         }
                     } else {
-                        echo "Skipping — not on main branch."
+                        echo "❌ HEAD is not the latest commit on main. Skipping."
                     }
                 }
             }
