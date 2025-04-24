@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EMAIL_RECIPIENTS = 'royarunava111@gmail.com,sulataroy1111@gmail.com'
+        EMAIL_RECIPIENTS = 'royarunava111@gmail.com'
         GIT_PATH = '"C:\\Program Files\\Git\\bin\\git.exe"'
     }
 
