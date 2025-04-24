@@ -78,7 +78,3 @@ Your Jenkins Bot 🤖
         }
     }
 }
-
-        }
-    }
-}
