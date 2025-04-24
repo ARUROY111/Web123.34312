@@ -33,7 +33,7 @@ pipeline {
                         echo "✅ This is the latest commit on main. Checking for merge commit..."
 
                         def parentHashes = bat(
-                            script: "@echo off && ${GIT_PATH} log -1 --pretty=%P",
+                            script: "@echo off && ${GIT_PATH} log -1 --pretty=%%P",
                             returnStdout: true
                         ).trim()
                         def parentCount = parentHashes.split().length
